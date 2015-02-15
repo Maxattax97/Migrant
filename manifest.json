@@ -1,0 +1,12 @@
+{
+  "name": "Migrant",
+  "description": "A game designed similarly to The Oregon Trail, but focused on illegal immigration.",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "icons": { "32": "favicon.ico", "152": "img/ipad-retina.png", "60": "img/iphone.png", "120": "img/iphone-retina.png", "76": "ipad.png" }
+}

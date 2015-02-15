@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" > <!-- manifest="manifest.appcache" -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Migrant">
+    <meta name="format-detection" content="telephone=no">
+    <title>
+            Migrant
+    </title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,900' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+
+    <link href="img/startup-retina-tall.png"
+          media="(device-width: 320px) and (device-height: 568px)
+    and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link href="img/startup-retina.png"
+          media="(device-width: 320px) and (device-height: 480px)
+    and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link href="img/startup.png"
+          media="(device-width: 320px) and (device-height: 480px)
+    and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <link rel="apple-touch-icon" href="img/iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/ipad-retina.png">
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+            -webkit-tap-highlight-color: rgba(0,0,0,0); /* Disable touch highlight */
+        }
+    </style>
+</head>
+<body>
+
+<div id="viewport"></div>
+
+<!-- http://jsconsole.com/?%3Alisten%2045E850B7-59AE-4D29-8715-0956841E0079
+<script src="http://jsconsole.com/remote.js?45E850B7-59AE-4D29-8715-0956841E0079"></script> -->
+
+<!-- Minify these, compress the images, set up manifest! -->
+<script type="text/javascript" src="js/kinetic.js"></script>
+<script type="text/javascript" src="js/resources.js"></script>
+<script type="text/javascript" src="js/gamelib.js"></script>
+<script type="text/javascript" src="js/player.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/probabilities.js"></script>
+<!--<script type="text/javascript" src="js/min/source.min.js"></script>-->
+</body>
+</html>

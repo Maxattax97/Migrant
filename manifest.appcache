@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# 2/7/2015 11:50 PM
+# Remember to try and minify and compress ALL FILES.
+/index.html
+/style.css
+/js/game.js
+/js/gamelib.js
+/resources.js
+/js/kinetic.min.js
+/img/*
+
+NETWORK:
+/fonts/*
+
+FALLBACK:
+/offline.html
+
