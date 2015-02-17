@@ -1,12 +1,12 @@
-PROBABILITIES = [
-    [7, function() {
+var PROBABILITIES = [
+    [9, function() {
         if (!hasEffect(AILMENT_TYPES.BROKEN_LIMB)) {
             addEffect(AILMENT_TYPES.BROKEN_LIMB, AILMENTS);
             return true;
         }
         return false;
     }], // 0 Broken limb
-    [12, function() {
+    [23, function() {
         if (REGION != REGIONS.SONORAN_DESERT && hasEffect(AILMENT_TYPES.BROKEN_LIMB)) {
             removeEffect(AILMENT_TYPES.BROKEN_LIMB);
             new Pane({message: DIALOG.chanceGrupoBetaBrokenLimb[LANGUAGE], title: DIALOG.grupoBeta[LANGUAGE], layer: ui});
@@ -14,7 +14,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 1 Grupo Beta heal broken limb
-    [14, function() {
+    [34, function() {
         if (REGION == REGIONS.SONORAN_DESERT && (hasEffect(AILMENT_TYPES.DENGUE_FEVER) || hasEffect(AILMENT_TYPES.DIARRHEA) || hasEffect(AILMENT_TYPES.TUBERCULOSIS) || hasEffect(AILMENT_TYPES.SCABIES))) {
             var encounter = new Pane({message: DIALOG.chanceDesertEncounter[LANGUAGE], title: DIALOG.encounter[LANGUAGE], height: 125, yesNo: true, noClose: true, layer: ui});
 
@@ -41,14 +41,14 @@ PROBABILITIES = [
         }
         return false;
     }], // 2 American medicine desert encounter
-    [3, function() {
+    [4, function() {
         if (REGION != REGIONS.SONORAN_DESERT) {
             die(DIALOG.chanceLosZetasKill[LANGUAGE]);
             return true;
         }
         return false;
     }], // 3 Los Zetas gameOver encounter
-    [17, function() {
+    [30, function() {
         var cost = getLocalPrice(Math.random() * (300 - 100) + 100);
         if (getLocalWallet() >= cost) {
             var distance = Math.round(Math.random() * (200 - 50) + 50);
@@ -83,7 +83,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 4 Coyote encounter
-    [23, function() {
+    [100, function() {
         if (REGION != REGIONS.SONORAN_DESERT) {
             var store = new Pane({
                 message: DIALOG.chanceStore[LANGUAGE],
@@ -137,14 +137,14 @@ PROBABILITIES = [
         }
         return false;
     }], // 7 Mara Salvatrucha Rob
-    [15, function() {
+    [10, function() {
         if (REPORTED_TO_AUTHORITIES) {
             die(DIALOG.chanceApprehended[LANGUAGE]);
             return true;
         }
         return false;
     }], // 8 Reported to authorities
-    [18, function() {
+    [35, function() {
         var cost = getLocalPrice(Math.random() * (400 - 200) + 200);
         if (getLocalWallet() >= cost && RIDING_LA_BESTIA == false) {
             var bestia = new Pane({
@@ -183,7 +183,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 9 La Bestia
-    [20, function() {
+    [55, function() {
         if (BIOME == BIOMES.TROPICAL) {
             var banana = new Pane({message: DIALOG.chanceBananaFarm[LANGUAGE], title: DIALOG.food[LANGUAGE], yesNo: true, layer: ui});
             banana.option1.onActivate = function() {
@@ -203,7 +203,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 10 Banana Farm
-    [25, function() {
+    [42, function() {
         new Pane({message: DIALOG.chanceSupplies[LANGUAGE], title: DIALOG.supplies[LANGUAGE], layer: ui});
         var amtWater = Math.random() * 8;
         var amtFood = Math.random() * 8;
@@ -212,7 +212,7 @@ PROBABILITIES = [
         updateInventory();
         return true;
     }], // 11 Supply Stash
-    [23, function() {
+    [48, function() {
         if (REGION != REGIONS.SONORAN_DESERT) {
             var payout = getLocalPrice(Math.random() * (80 - 60) + 60);
             var job = new Pane({message: DIALOG.chanceOddJob1[LANGUAGE] + getLocalDisplayPrice(payout) + DIALOG.chanceOddJob2[LANGUAGE], title: DIALOG.oddJob[LANGUAGE], yesNo: true, layer: ui});
@@ -231,7 +231,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 12 Odd Job
-    [18, function() {
+    [40, function() {
         if (REGION == REGIONS.SONORAN_DESERT) {
             var barrel = new Pane({message: DIALOG.chanceBarrels[LANGUAGE], title: DIALOG.water[LANGUAGE], yesNo: true, layer: ui});
             THIRST = 100;
@@ -248,7 +248,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 13 Water Barrel
-    [12, function() {
+    [38, function() {
         if (REGION != REGIONS.SONORAN_DESERT) {
             var shelter = new Pane({message: DIALOG.chanceShelter[LANGUAGE], title: DIALOG.shelter[LANGUAGE], yesNo: true, layer: ui});
 
@@ -259,7 +259,6 @@ PROBABILITIES = [
                         shelter.close();
                     } else {
                         RESTING = true;
-                        nextCycle();
                         ENERGY = 100;
                         THIRST = 100;
                         HUNGER = 100;
@@ -273,6 +272,7 @@ PROBABILITIES = [
                         updateBars();
                         updateStatus();
                         updateInventory();
+                        nextCycle();
                         shelter.close();
                     }
                 }
@@ -281,7 +281,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 14 Community Shelter
-    [8, function() {
+    [15, function() {
         if (REGION == REGIONS.SONORAN_DESERT) {
             var encounter = new Pane({message: DIALOG.chanceDesertEncounter[LANGUAGE], title: DIALOG.encounter[LANGUAGE], height: 125, yesNo: true, noClose: true, layer: ui});
 
@@ -294,7 +294,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 15 Patriot
-    [10, function() {
+    [35, function() {
         if (hasEffect(PERK_TYPES.OUTDOORSMAN)) {
             if (Math.random() <= 0.5) {
                 new Pane({message: DIALOG.chanceOutdoorsmanFindWater[LANGUAGE], title: DIALOG.outdoorsman[LANGUAGE], layer: ui});
@@ -324,7 +324,7 @@ PROBABILITIES = [
         }
         return false;
     }], // 18 Scabies
-    [21, function() {
+    [25, function() {
         if (!hasEffect(AILMENT_TYPES.SPRAIN)) {
             addEffect(AILMENT_TYPES.SPRAIN, AILMENTS);
             return true;
@@ -335,21 +335,21 @@ PROBABILITIES = [
         die(DIALOG.chanceApprehended[LANGUAGE]);
         return true;
     }], // 20 Caught by authorities
-    [14, function() {
+    [20, function() {
         if (hasEffect(AILMENT_TYPES.DIARRHEA)) {
             removeEffect(AILMENT_TYPES.DIARRHEA);
             return true;
         }
         return false;
     }], // 21 Heal Diarrhea
-    [17, function() {
+    [45, function() {
         if (hasEffect(AILMENT_TYPES.SPRAIN)) {
             removeEffect(AILMENT_TYPES.SPRAIN);
             return true;
         }
         return false;
     }], // 22 Heal Sprain
-    [12, function() {
+    [35, function() {
         if (BIOME == BIOMES.DESERT && !hasEffect(PERK_TYPES.OUTDOORSMAN)) {
             var stream = new Pane({message: DIALOG.chanceDesertStream[LANGUAGE], title: DIALOG.water[LANGUAGE], yesNo: true, layer: ui});
 
@@ -368,11 +368,19 @@ PROBABILITIES = [
             return true;
         }
         return false;
-    }] // 23 Desert water
+    }], // 23 Desert water
+    [27, function() {
+        if (REGION != REGIONS.SONORAN_DESERT && hasEffect(AILMENT_TYPES.DENGUE_FEVER)) {
+            removeEffect(AILMENT_TYPES.DENGUE_FEVER);
+            new Pane({message: DIALOG.chanceGrupoBetaDengueFever[LANGUAGE], title: DIALOG.grupoBeta[LANGUAGE], layer: ui});
+            return true;
+        }
+        return false;
+    }] // 24 Grupo Beta heal Dengue Fever
 ];
 
 // Method of scaling
 // RARE: 1 <= x <= 10
-// UNCOMMON: 10 <= x <= 20
-// COMMON: 20 <= x <= 30
+// UNCOMMON: 10 <= x <= 40
+// COMMON: 40 <= x <= 100
 

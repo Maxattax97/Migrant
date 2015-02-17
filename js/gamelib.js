@@ -9,8 +9,8 @@ var STAGE = new Kinetic.Stage({
     height: HEIGHT
 });
 
-var background = new Kinetic.Layer({});
-var foreground = new Kinetic.Layer({});
+var background = new Kinetic.Layer({listening: false});
+var foreground = new Kinetic.Layer({listening: false});
 var ui = new Kinetic.Layer({});
 
 function setViewSize() {
@@ -240,7 +240,7 @@ var Pane = function (param) {
 
         this.option2.onActivate = function() {
             self.close();
-        }
+        };
     }
 
     this.base.on("mousedown touchstart", function(evt) {

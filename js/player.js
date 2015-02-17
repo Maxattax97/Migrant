@@ -1,64 +1,64 @@
-BACKGROUND = 0;
-CHARACTER = undefined;
+var BACKGROUND = 0;
+var CHARACTER = undefined;
 
 // Weights are in kg (1 kg water = 1 L water)
-MAX_CARRY_WEIGHT = 25; // About 33% of an average 75kg man is rule of thumb carry weight
-CARRY_WEIGHT = 0;
-FOOD = 0; // Most people eat about 1.8 kg of food per day. Food decays at about 14.3% per day (100% / 7 days).
-WATER = 0; // Most people drink about 1 L per day. 1.5L due to hot conditions is probably reasonable.
-INVENTORY = undefined;
-STATUS = undefined;
+var MAX_CARRY_WEIGHT = 25; // About 33% of an average 75kg man is rule of thumb carry weight
+var CARRY_WEIGHT = 0;
+var FOOD = 0; // Most people eat about 1.8 kg of food per day. Food decays at about 14.3% per day (100% / 7 days).
+var WATER = 0; // Most people drink about 1 L per day. 1.5L due to hot conditions is probably reasonable.
+var INVENTORY = undefined;
+var STATUS = undefined;
 
 // Status
-HUNGER = 100; // About 7 days without food will likely cause gameOver. (12.6 kg - 14.3% per eat)
-THIRST = 100; // About 4 days without water will likely cause gameOver. (6 L - 25% per drink)
-TEMPERATURE = 37; // Degrees C. Less than 32' and hypothermia kills you. More than 42' and hyperthermia kills you. (About 1 degree toward homeostasis per rest?)
-ENERGY = 100; // About 11 days without sleep will likely cause gameOver. (~88 hrs - 18% per rest)
+var HUNGER = 100; // About 7 days without food will likely cause gameOver. (12.6 kg - 14.3% per eat)
+var THIRST = 100; // About 4 days without water will likely cause gameOver. (6 L - 25% per drink)
+var TEMPERATURE = 37; // Degrees C. Less than 32' and hypothermia kills you. More than 42' and hyperthermia kills you. (About 1 degree toward homeostasis per rest?)
+var ENERGY = 100; // About 11 days without sleep will likely cause gameOver. (~88 hrs - 18% per rest)
 
 // Currencies
-PESOS = 0;      // Mexico. 1 USD = 14.57 Pesos.
-QUETZALES = 0;  // Guatemala. 1 USD = 7.65 Quetzales.
-LEMPIRAS = 0;   // Honduras. 1 USD = 21 Lempiras.
-US_DOLLARS = 0; // San Salvador. (They use the USD.)
+var PESOS = 0;      // Mexico. 1 USD = 14.57 Pesos.
+var QUETZALES = 0;  // Guatemala. 1 USD = 7.65 Quetzales.
+var LEMPIRAS = 0;   // Honduras. 1 USD = 21 Lempiras.
+var US_DOLLARS = 0; // San Salvador. (They use the USD.)
 
 // Geographic
-REGIONS = {HONDURAS: "Honduras", SAN_SALVADOR: "San Salvador", GUATEMALA: "Guatemala", MEXICO: DIALOG.mexico[LANGUAGE], SONORAN_DESERT: DIALOG.sonoranDesert[LANGUAGE]};
-REGION = REGIONS.SONORAN_DESERT;
-BIOMES = {DESERT: DIALOG.desert[LANGUAGE], SAVANNA: DIALOG.savanna[LANGUAGE], TROPICAL: DIALOG.tropical[LANGUAGE]};
-BIOME = BIOMES.DESERT;
-STEP_MAX = {};
-STEP_MAX[REGIONS.HONDURAS] = 290; // Kilometers
-STEP_MAX[REGIONS.EL_SALVADOR] = 121;
-STEP_MAX[REGIONS.GUATEMALA] = 511;
-STEP_MAX[REGIONS.MEXICO] = 2576;
-STEP_MAX[REGIONS.SONORAN_DESERT] = 756;
+var REGIONS = {HONDURAS: "Honduras", SAN_SALVADOR: "San Salvador", GUATEMALA: "Guatemala", MEXICO: DIALOG.mexico[LANGUAGE], SONORAN_DESERT: DIALOG.sonoranDesert[LANGUAGE]};
+var REGION = REGIONS.SONORAN_DESERT;
+var BIOMES = {DESERT: DIALOG.desert[LANGUAGE], SAVANNA: DIALOG.savanna[LANGUAGE], TROPICAL: DIALOG.tropical[LANGUAGE]};
+var BIOME = BIOMES.DESERT;
+var STEP_MAX = {};
+    STEP_MAX[REGIONS.HONDURAS] = 290; // Kilometers
+    STEP_MAX[REGIONS.EL_SALVADOR] = 121;
+    STEP_MAX[REGIONS.GUATEMALA] = 511;
+    STEP_MAX[REGIONS.MEXICO] = 2576;
+    STEP_MAX[REGIONS.SONORAN_DESERT] = 756;
 /*STEP_MAX[REGIONS.HONDURAS] = 309; // Kilometers
 STEP_MAX[REGIONS.EL_SALVADOR] = 174;
 STEP_MAX[REGIONS.GUATEMALA] = 1452;
 STEP_MAX[REGIONS.MEXICO] = 1518;
 STEP_MAX[REGIONS.SONORAN_DESERT] = 450;*/
-STEP = 0;
-BIOME_MARKERS = {};
-BIOME_MARKERS[BIOMES.SAVANNA] = STEP_MAX[REGIONS.GUATEMALA] + 1300;
-BIOME_MARKERS[BIOMES.DESERT] = STEP_MAX[REGIONS.GUATEMALA] + STEP_MAX[REGIONS.MEXICO];
+var STEP = 0;
+var BIOME_MARKERS = {};
+    BIOME_MARKERS[BIOMES.SAVANNA] = STEP_MAX[REGIONS.GUATEMALA] + 1300;
+    BIOME_MARKERS[BIOMES.DESERT] = STEP_MAX[REGIONS.GUATEMALA] + STEP_MAX[REGIONS.MEXICO];
 
 // Stats
-AILMENT_TYPES = {BROKEN_LIMB: DIALOG.brokenLimb[LANGUAGE], TUBERCULOSIS: DIALOG.tuberculosis[LANGUAGE], SCABIES: DIALOG.scabies[LANGUAGE], DENGUE_FEVER: DIALOG.dengueFever[LANGUAGE], DEHYDRATION: DIALOG.dehydration[LANGUAGE], EXHAUSTION: DIALOG.exhaustion[LANGUAGE], SPRAIN: DIALOG.sprain[LANGUAGE], DIARRHEA: DIALOG.diarrhea[LANGUAGE], MALNUTRITION: DIALOG.malnutrition[LANGUAGE]};
-PERK_TYPES = {OUTDOORSMAN: DIALOG.outdoorsman[LANGUAGE], LIGHTWEIGHT: DIALOG.lightweight[LANGUAGE]};
-AILMENTS = [];
-PERKS = [];
-DAYS = 0;
+var AILMENT_TYPES = {BROKEN_LIMB: DIALOG.brokenLimb[LANGUAGE], TUBERCULOSIS: DIALOG.tuberculosis[LANGUAGE], SCABIES: DIALOG.scabies[LANGUAGE], DENGUE_FEVER: DIALOG.dengueFever[LANGUAGE], DEHYDRATION: DIALOG.dehydration[LANGUAGE], EXHAUSTION: DIALOG.exhaustion[LANGUAGE], SPRAIN: DIALOG.sprain[LANGUAGE], DIARRHEA: DIALOG.diarrhea[LANGUAGE], MALNUTRITION: DIALOG.malnutrition[LANGUAGE]};
+var PERK_TYPES = {OUTDOORSMAN: DIALOG.outdoorsman[LANGUAGE], LIGHTWEIGHT: DIALOG.lightweight[LANGUAGE]};
+var AILMENTS = [];
+var PERKS = [];
+var DAYS = 0;
 
 // Miscellaneous Information
-TIME_OF_DAY = {DAY: DIALOG.day[LANGUAGE], NIGHT: DIALOG.night[LANGUAGE]};
-CYCLE = TIME_OF_DAY.DAY;
-ENVIRONMENTAL_TEMPERATURE = 22; // In celsius.
-RESTING = false;
-GAME_STARTED = false;
-GROUND_COLOR = "#b9aa65";
-REPORTED_TO_AUTHORITIES = false;
-RIDING_LA_BESTIA = false;
-WITH_COYOTE = false;
+var TIME_OF_DAY = {DAY: DIALOG.day[LANGUAGE], NIGHT: DIALOG.night[LANGUAGE]};
+var CYCLE = TIME_OF_DAY.DAY;
+var ENVIRONMENTAL_TEMPERATURE = 22; // In celsius.
+var RESTING = false;
+var GAME_STARTED = false;
+var GROUND_COLOR = "#b9aa65";
+var REPORTED_TO_AUTHORITIES = false;
+var RIDING_LA_BESTIA = false;
+var WITH_COYOTE = false;
 
 // Initialization required...
 var initializePlayer = function() {
@@ -98,6 +98,14 @@ var triggerEvent = function(eventId) {
     if (!output) {
         console.log("FAILURE: EVENT REQUIREMENTS NOT MET.");
     }
+};
+
+var probEvent = function(eventId) {
+    var sum = 0;
+    for (var s = 0; s < PROBABILITIES.length; s++) {
+        sum += PROBABILITIES[s][0];
+    }
+    return PROBABILITIES[eventId][0] / sum;
 };
 
 var getLocalPrice = function(usdPrice) {
@@ -481,17 +489,44 @@ var win = function() {
         layer: winScreen
     });
 
-    var score = new Annotation({
+    var score = 0;
+    score += (US_DOLLARS + (LEMPIRAS / 21) + (PESOS / 14.57) + (QUETZALES / 7.65)) * 2;
+    score += (FOOD * 2.50) + (WATER * 0.7); // Settle for highest price.
+    score -= AILMENTS.length * 10;
+    score -= DAYS * 5;
+    score += ENERGY;
+    score += HUNGER;
+    score += THIRST;
+    score -= Math.abs(TEMPERATURE - 37) * 5;
+    // Background 1 offers no multiplier.
+    switch (BACKGROUND) {
+        case 2:
+            score *= 2;
+            break;
+        case 3:
+            score *= 1.5;
+            break;
+        case 4:
+            score *= 3;
+            break;
+        case 5:
+            score *= 2.5;
+            break;
+    }
+
+    // In case their score is really bad...
+    score = Math.abs(score);
+    score = Math.round(score);
+
+    var scoreAnno = new Annotation({
         width: 150,
         height: 75,
-        text: DIALOG.score[LANGUAGE] + ": 123456",
+        text: DIALOG.score[LANGUAGE] + ": " + score,
         fontSize: 20,
         x: 10,
         y: HEIGHT - 85,
         layer: winScreen
     });
-
-    // Display score
 
     var title = new Kinetic.Text({text: DIALOG.winTitle[LANGUAGE], fontSize: 40, x: 10, y: 10, align: "center", fill: "black", fontStyle: "bold"});
     title.setWidth(WIDTH - 20);

@@ -583,6 +583,7 @@ var main = function() {
             hungerBar.setWidth(0);
             die(DIALOG.diedOfHunger[LANGUAGE]);
         } else {
+            HUNGER = Math.min(HUNGER, 100);
             if (HUNGER < 25) {
                 addEffect(AILMENT_TYPES.MALNUTRITION, AILMENTS);
             } else if (HUNGER >= 25) {
@@ -594,6 +595,7 @@ var main = function() {
             thirstBar.setWidth(0);
             die(DIALOG.diedOfThirst[LANGUAGE]);
         } else {
+            THIRST = Math.min(THIRST, 100);
             if (THIRST < 25) {
                 addEffect(AILMENT_TYPES.DEHYDRATION, AILMENTS);
             } else if (THIRST >= 25) {
@@ -609,6 +611,7 @@ var main = function() {
                 die(DIALOG.diedOfHeartAttack[LANGUAGE]);
             }
         } else {
+            ENERGY = Math.min(ENERGY, 100);
             if (ENERGY < 25) {
                 addEffect(AILMENT_TYPES.EXHAUSTION, AILMENTS);
             } else if (ENERGY >= 25) {
@@ -747,8 +750,10 @@ var main = function() {
 
     var spinStars = new Kinetic.Animation(function(frame) {
         if (stars.visible()) {
-            stars.position({x: stars.x() + 0.001 * frame.timeDiff, y: stars.y() + 0.001 * frame.timeDiff});
-            for (var i = 0; i < stars.children.length; i++) {
+            stars.move({x: 0.001 * frame.timeDiff, y: 0.001 * frame.timeDiff});
+            //stars.position({x: stars.x() + 0.001 * frame.timeDiff, y: stars.y() + 0.001 * frame.timeDiff});
+            for (var i = 0; i < stars.children.length / 4; i++) {
+                //var s = Math.round(Math.random() * stars.children.length);
                 stars.children[i].rotate(stars.children[i].angularSpeed * 360 * frame.timeDiff / 1000);
             }
             if (stars.x() > 0 || stars.y() > 0) {
@@ -801,8 +806,8 @@ var main = function() {
             HUNGER -= (Math.random() * (3 + 3) - 2) + (14.3 / 2);
             THIRST -= (Math.random() * (5 + 5) - 5) + (25 / 2);
             ENERGY -= (Math.random() * (2 + 2) - 2) + (9 / 2);
-            // Food decay
-            FOOD -= FOOD * (0.143 / 2);
+            // Food decay (Altered from .143)
+            FOOD -= FOOD * 0.015385;
             if (BIOME == BIOMES.DESERT) {
                 // Average Diurnal Variation: 15 C
                 if (CYCLE == TIME_OF_DAY.NIGHT) {
@@ -826,7 +831,7 @@ var main = function() {
                     ENVIRONMENTAL_TEMPERATURE -= Math.random() * (8 - 3) + 3;
                 }
             }
-            TEMPERATURE = ((1 - (THIRST / 100)) + 1) * (0.0001113 * Math.pow(ENVIRONMENTAL_TEMPERATURE, 3) + -0.007346 * Math.pow(ENVIRONMENTAL_TEMPERATURE, 2) + 0.1919 * ENVIRONMENTAL_TEMPERATURE) + 35.15
+            TEMPERATURE = ((1 - (THIRST / 100)) + 1) * (0.0001113 * Math.pow(ENVIRONMENTAL_TEMPERATURE, 3) + -0.007346 * Math.pow(ENVIRONMENTAL_TEMPERATURE, 2) + 0.1919 * ENVIRONMENTAL_TEMPERATURE) + 35.15;
 
 
             if (hasEffect(AILMENT_TYPES.TUBERCULOSIS) || hasEffect(AILMENT_TYPES.DENGUE_FEVER)) {
@@ -863,7 +868,7 @@ var main = function() {
                 sum += PROBABILITIES[s][0];
             }
 
-            if (Math.random() <= 0.75) {
+            if (Math.random() <= 0.25) {
                 console.log("Nothing interesting happened this day.");
             } else {
                 var response = false;
